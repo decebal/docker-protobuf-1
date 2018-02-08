@@ -24,7 +24,7 @@ Php is installed in the docker file, as it is meant to be used with: https://git
     docker run -it --rm -v $PWD:/src:rw \
       decebal2dac/protoc-php  \
       --php_out=out \
-      --grpc-php_out=composer_name=Memoria/Application/Providers/Grpc:out \
+      --grpc-php_out=composer_name=Providers/Grpc:out \
       --plugin=protoc-gen-grpc-php=./vendor/bin/protoc-gen-grpc-php \
       *.proto
 
