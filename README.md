@@ -33,11 +33,11 @@ Php is installed in the docker file, as it is meant to be used with: https://git
 ### requirements 
 - at the moment it needs composer installed locally, composer also is installed in the `decebal2dac/protoc-php` container, but haven't got to the part where the package is installed in it as well
 - as an alternative one can just install composer locally using this one liner:
-    
-    curl -s https://getcomposer.org/installer | php && \
-        mv composer.phar /usr/local/bin/composer && \
-        composer global require hirak/prestissimo
-    
+
+        curl -s https://getcomposer.org/installer | php && \
+            mv composer.phar /usr/local/bin/composer && \
+            composer global require hirak/prestissimo
+
 
 ## Contributors
 
