@@ -1,6 +1,6 @@
 # protobuf 3 docker
 
-[on docker hub](https://registry.hub.docker.com/u/calico/protoc/)
+[on docker hub](https://hub.docker.com/r/decebal2dac/protoc-php/)
 
 Docker image with protoc 3, gogo plugin and php 7.0.  Based on the work of
 nanoservice and tigera.
@@ -21,6 +21,8 @@ nanoservice and tigera.
 
 Php is installed in the docker file, as it is meant to be used with: https://github.com/lvht/protoc-gen-grpc-php. For example:
 
+    composer require lvht/grpc
+
     docker run -it --rm -v $PWD:/src:rw \
       decebal2dac/protoc-php  \
       --php_out=out \
@@ -28,9 +30,17 @@ Php is installed in the docker file, as it is meant to be used with: https://git
       --plugin=protoc-gen-grpc-php=./vendor/bin/protoc-gen-grpc-php \
       *.proto
 
+### requirements 
+- at the moment it needs composer installed locally, composer also is installed in the `decebal2dac/protoc-php` container, but haven't got to the part where the package is installed in it as well
+- as an alternative one can just install composer locally using this one liner:
+    
+    curl -s https://getcomposer.org/installer | php && \
+        mv composer.phar /usr/local/bin/composer && \
+        composer global require hirak/prestissimo
+    
 
 ## Contributors
 
-* Tigera (added gogo)
+* [Tigera](https://github.com/tigera) (added gogo)
 * Based on the work by [waterlink](https://github.com/waterlink) Oleksii Fedorov, creator, maintainer
-* Decebal (added php 7.0)
+* [Decebal](https://github.com/decebal) (added php 7.0)
