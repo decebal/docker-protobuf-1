@@ -20,6 +20,7 @@ nanoservice and tigera.
       decebal2dac/protoc-php --cpp_out=. *.proto
 
 Php is installed in the docker file, as it is meant to be used with: https://github.com/lvht/protoc-gen-grpc-php. For example:
+
     docker run -it --rm -v $PWD:/src:rw \
       decebal2dac/protoc-php  \
       --php_out=out \
