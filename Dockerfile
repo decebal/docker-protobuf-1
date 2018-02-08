@@ -178,9 +178,9 @@ RUN set -eux; \
 
 COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 
-RUN curl -s https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer && \
-    composer global require hirak/prestissimo
+# RUN curl -s https://getcomposer.org/installer | php && \
+#     mv composer.phar /usr/local/bin/composer && \
+#     composer global require hirak/prestissimo
 
 ADD . /src
 WORKDIR /src
