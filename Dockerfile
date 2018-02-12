@@ -192,9 +192,23 @@ RUN apt-get update; \
 	&& docker-php-ext-enable protobuf; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /tmp/pear ~/.pearrc
- 
+	
 RUN curl -s https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
+
+RUN mkdir /grpc
+WORKDIR /grpc
+
+RUN apt-get update; \
+	apt-get install -y --no-install-recommends \
+		git \
+	; \
+	rm -rf /var/lib/apt/lists/*; \
+	git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc \
+	&& cd grpc; \
+	git submodule update --init \
+	&& make grpc_php_plugin; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
 
 ADD . /src
 WORKDIR /src

@@ -5,6 +5,8 @@
 Docker image with protoc 3, gogo plugin and php 7.0.  Based on the work of
 nanoservice and tigera.
 
+The initial image was enriched based on this tutorial: https://grpc.io/docs/quickstart/php.html#run
+
 ## Usage
 
     # Just print protobuf help message
@@ -35,8 +37,7 @@ Php is installed in the docker file, as it is meant to be used with: https://git
 - as an alternative one can just install composer locally using this one liner:
 
         curl -s https://getcomposer.org/installer | php && \
-            mv composer.phar /usr/local/bin/composer && \
-            composer global require hirak/prestissimo
+            mv composer.phar /usr/local/bin/composer 
 
 
 ## Contributors
