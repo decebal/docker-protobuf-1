@@ -178,9 +178,23 @@ RUN set -eux; \
 
 COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 
-# RUN curl -s https://getcomposer.org/installer | php && \
-#     mv composer.phar /usr/local/bin/composer && \
-#     composer global require hirak/prestissimo
+RUN curl -s https://getcomposer.org/installer | php && \
+     mv composer.phar /usr/local/bin/composer
+
+RUN apt-get update; \
+	apt-get install -y --no-install-recommends \
+		zlib1g-dev \
+	; \
+	rm -rf /var/lib/apt/lists/*; \
+	pecl install grpc \
+	&& docker-php-ext-enable grpc; \
+	pecl install protobuf \
+	&& docker-php-ext-enable protobuf; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /tmp/pear ~/.pearrc
+ 
+RUN curl -s https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
 
 ADD . /src
 WORKDIR /src
